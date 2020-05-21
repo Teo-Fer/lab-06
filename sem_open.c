@@ -14,8 +14,15 @@ int main(int argc, char* argv[])
         fprintf(stderr, "Uso: %s nombre valor\n", argv[0]);
         exit(EXIT_FAILURE);
     }
+    
+    int n = atoi(argv[2]);
 
-    sem_t *sem = sem_open();
+    if (n<0){
+        fprintf(stderr,"El valor del semaforo debe ser mayor o igual 0\n");
+        exit(EXIT_FAILURE);
+    }
+
+    sem_t *sem = sem_open(argv[1],O_CREAT,0644 ,n);
 
     if (sem == SEM_FAILED) {
         perror("sem_open");

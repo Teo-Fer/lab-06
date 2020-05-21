@@ -15,14 +15,14 @@ int main(int argc, char* argv[])
         exit(EXIT_FAILURE);
     }
 
-    sem_t *sem  = sem_open();
+    sem_t *sem  = sem_open(argv[1], O_RDONLY);
 
     if (sem == SEM_FAILED) {
         perror("sem_open");
         exit(EXIT_FAILURE);
     }
 
-    if (sem_post() == -1) {
+    if (sem_post(sem) == -1) {
         perror("sem_post");
         exit(EXIT_FAILURE);
     }

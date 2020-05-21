@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     }
 
     // eliminar el semaforo
-    int r = sem_unlink();
+    int r = sem_unlink(argv[1]);
 
     if (r < 0) {
         perror("sem_open");

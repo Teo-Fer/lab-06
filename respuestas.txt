@@ -1,0 +1,20 @@
+Ejercicio 1:
+  
+   Las dos señales que no pueden ser atrapadas son SIGKILL y SIGSTOP, 
+   ya que solo las puede ver el kernel
+
+Ejercicio 2:
+ a-Esta condición de carrera ocurre porque ambos hilos intentan acceder al mismo 
+   recurso compartido, entonces los datos modificados se pisan.
+   Esto se podría evitar si sólo un hilo tiene acceso al recurso, es
+   decir, si se van turnando para copiar y actualizar el recurso compartido.
+
+b-Porque al pasar un valor pequeño, el primero hilo termina su ejecucion
+  antes que se cree el segundo hilo.
+
+Ejercicio 3:
+
+   Lo que sucede con el proceso que ejecuta sem_wait /semafor & es que se ejecuta en 
+   segundo plano. El proceso que ejecuta sem_wait, en este caso, bloquea el semaforo, dado que
+   este se habia creado con el valor 0, por ultimo con sem_post liberamos el semaforo.
+

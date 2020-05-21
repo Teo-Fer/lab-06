@@ -1,3 +1,4 @@
+
 //
 // Ejercicio 2 -- sem_getvalue 
 //
@@ -12,14 +13,13 @@
 int main(int argc, char* argv[])
 {
     int value;
-    sem_t *semaphore;
 
     if (argc < 2) {
         fprintf(stderr, "Uso: %s semaforo\n", argv[0]);
         exit(EXIT_FAILURE);
     }
 
-    sem_open();
+    sem_t *semaphore  = sem_open(argv[1], O_RDONLY);
 
     if (semaphore == SEM_FAILED) {
         perror("sem_open");
@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
     }
 
 
-    if (sem_getvalue() == -1) {
+    if (sem_getvalue(semaphore, &value) == -1) {
         perror("sem_open");
         exit(EXIT_FAILURE);
     }
